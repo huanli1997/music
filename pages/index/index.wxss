@@ -1,0 +1,116 @@
+/* pages/index/index.wxss */
+.nav .navItem image{
+  width: 100%;
+  height: 100%;
+}
+
+.headerNav{
+  display: flex;
+  padding: 20rpx;
+}
+
+.headerNav .headerItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1
+  
+}
+
+.headerNav .headerItem .iconfont{
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: red;
+  color: white;
+  font-size: 50rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+}
+
+.headerNav .headerItem text{
+  font-size: 28rpx;
+}
+.recommendContainer{
+  margin: 20rpx 20rpx;
+}
+
+
+.recommendScroll{
+  display: flex;
+  padding-top: 20rpx;
+  height: 340rpx;
+}
+
+.recommendScroll .recommendItem{
+  width: 200rpx;
+  margin-right: 20rpx
+
+}
+
+.recommendScroll .recommendItem image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+.recommendScroll .recommendItem text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 开启webkit内核的盒模型 */
+  display: -webkit-box;
+  /* 设置子元素对其方式 */
+  -webkit-box-orient: vertical;
+  /* 设置为2行文本溢出隐藏 */
+  -webkit-line-clamp: 2
+}
+
+.topContainer{
+  margin: 0 20rpx;
+  height: 600rpx;
+}
+
+.topContainer .topSwiper{
+  height: 100%
+}
+.topContainer .topItem{
+  background: #faf9f9;
+  margin-right: 20rpx;
+
+}
+
+.topContainer .topTitle{
+  padding-bottom: 20rpx;
+  font-size: 28rpx
+}
+
+.topContainer .topContent{
+  margin: 20rpx 0;
+  display: flex;
+  align-items: center
+}
+
+.topContainer .topContent .topImg{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  /* flex-shrink 父元素空间不足时，缩小系数，0不缩小 */
+  flex-shrink:0;
+}
+
+.topContainer .topContent .topNum{
+  width: 100rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  /* flex-shrink 父元素空间不足时，缩小系数，0不缩小 */
+  flex-shrink:0;
+}
+
+.topContainer .topContent .topName{
+ overflow: hidden;
+ /* 溢出文字，用省略号显示 */
+ text-overflow: ellipsis;
+ /* 不换行 */
+ white-space: nowrap;
+}

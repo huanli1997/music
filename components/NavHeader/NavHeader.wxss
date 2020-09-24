@@ -1,0 +1,18 @@
+ .recommendHeader{
+  font-size: 28rpx;
+  color: #666;
+}
+
+ .recommendHeader .content{
+  font-size: 30rpx;
+  color: #000;
+  display: flex;
+  justify-content: space-between
+}
+
+.recommendHeader .content .more{
+ font-size: 20rpx;
+ border: 1rpx solid #000;
+ padding: 10rpx 20rpx;
+ border-radius: 10rpx;
+}

@@ -1,0 +1,8 @@
+ <view class="recommendHeader">
+    <!-- 使用 properties 组件的属性列表 里面的数据 -->
+    <view>{{title}}</view>
+    <view class="content">
+      <text>{{content}}</text>
+      <text class="more">查看更多</text>
+    </view>
+  </view>

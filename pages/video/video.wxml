@@ -1,0 +1,15 @@
+<view class="videoContainer">
+  <!-- 头部搜索区域 -->
+  <view class="header">
+    <image src="/static/images/video/video.jpg"></image>
+    <!-- placeholder-class 指定 placeholder 的样式类 -->
+    <input type="text" placeholder="光辉岁月" placeholder-class="placeholder"></input>
+    <image src="/static/images/logo.png"></image>
+  </view>
+  <!-- 头部滚动条 -->
+  <scroll-view class="navScroll" scroll-x enable-flex bindtap="changeId"> 
+    <view class="navItem {{currentId===item.id?'active':''}}" wx:for="{{videoGroup}}" wx:key="id">
+      <text  data-id="{{item.id}}">{{item.name}}</text>
+    </view>
+  </scroll-view>
+</view>
