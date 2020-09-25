@@ -2,14 +2,52 @@
   <!-- 头部搜索区域 -->
   <view class="header">
     <image src="/static/images/video/video.jpg"></image>
-    <!-- placeholder-class 指定 placeholder 的样式类 -->
     <input type="text" placeholder="光辉岁月" placeholder-class="placeholder"></input>
     <image src="/static/images/logo.png"></image>
   </view>
-  <!-- 头部滚动条 -->
-  <scroll-view class="navScroll" scroll-x enable-flex bindtap="changeId"> 
-    <view class="navItem {{currentId===item.id?'active':''}}" wx:for="{{videoGroup}}" wx:key="id">
-      <text  data-id="{{item.id}}">{{item.name}}</text>
+
+  <!-- 导航栏区域 -->
+  <!-- scroll-into-view 值应为某子元素id（id不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素 -->
+  <!-- scroll-with-animation 在设置滚动条位置时使用动画过渡 -->
+  <scroll-view class="navScroll" scroll-x enable-flex scroll-into-view="navScroll{{currentId}}" scroll-with-animation>
+    <view bindtap="changeId" class="navItem {{currentId===item.id?'active':''}}" wx:for="{{videoGroup}}" wx:key="id" data-id="{{item.id}}" id="navScroll{{item.id}}">
+      <text>{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- videoList区域 -->
+  <!-- refresher-enabled 开启自定义下拉刷新 -->
+  <!-- bindrefresherrefresh 自定义下拉刷新被触发 -->
+  <!-- refresher-triggered 设置当前下拉刷新状态，true 表示下拉刷新已经被触发，false 表示下拉刷新未被触发 -->
+  <!-- bindscrolltolower 滚动到底部/右边时触发 -->
+
+  <scroll-view class="videoList" scroll-y refresher-enabled bindrefresherrefresh="refresherRefresh" refresher-triggered="{{trigger}}" bindscrolltolower="scrollToLower">
+    <view class="videoItem" wx:for="{{videoList}}" wx:key="vid">
+      <!-- bindplay触发播放 -->
+      <!-- 一开始显示图片，当用户点击之后再切换成对于的video标签，使用可以给image添加id，它和video的id一致，通过id确认需要显示的是哪个video -->
+      <!-- video和image互斥，通过vx:if 和 xw:else 切换 -->
+      <!-- poster 视频封面的图片网络资源地址或云文件ID（2.3.0） -->
+      <video class="common" src="{{item.data.urlInfo.url}}" id="{{item.data.vid}}" wx:if="{{videoId === item.data.vid}}" poster="{{item.data.coverUrl}}"></video>
+      <image class="common" id="{{item.data.vid}}" bindtap="changeVideoId" src="{{item.data.coverUrl}}" wx:else></image>
+      <view class="content">{{item.data.title}}</view>
+      <view class="footer">
+        <image class="avatar" src="/static/images/logo.png"></image>
+        <text class="nickName">{{item.data.creator.nickname}}</text>
+        <view class="comments_praised">
+          <text class="item">
+            <text class="iconfont icon-buoumaotubiao15"></text>
+          <text class="count">{{item.data.shareCount}}</text>
+          </text>
+          <text class="item">
+            <text class="iconfont icon-pinglun1"></text>
+          <text class="count">{{item.data.commentCount}}</text>
+          </text>
+          <!--open-type="share"可以触发 onShareAppMessage(Object object)转发功能 -->
+          <button class="item btn" open-type="share" data-title="{{item.data.title}}" data-imageUrl="{{item.data.coverUrl}}"> 
+            <text class="iconfont icon-gengduo"></text>
+          </button>
+        </view>
+      </view>
     </view>
   </scroll-view>
 </view>

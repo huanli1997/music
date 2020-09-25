@@ -1,0 +1,88 @@
+/* pages/song/song.wxss */
+
+page {
+  height: 100%;
+}
+
+.songContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.songContainer .keng {
+  width: 60rpx;
+  height: 60rpx;
+  background: white;
+  border-radius: 50%;
+  z-index: 99;
+}
+
+.songContainer .needle {
+  position: relative;
+  left: 58rpx;
+  top: -36rpx;
+  width: 192rpx;
+  height: 274rpx;
+  z-index: 98;
+  transform: rotate(-20deg);
+  /* 设置旋转元素的基点位置 */
+  transform-origin: 40rpx 0;
+  transition: transform 1s;
+}
+
+/* 通过playing类来控制样式 */
+
+.songContainer .needle.playing {
+  transform: rotate(0deg);
+}
+
+.songContainer .discContainer {
+  position: relative;
+  top: -180rpx;
+  width: 598rpx;
+  height: 598rpx;
+  /* 
+    retateDise：需要执行的动画名称
+    4s 执行几秒一次
+    linear 匀速执行
+    infinite 执行无数次
+   */
+  animation: retateDise 4s linear infinite;
+  /* 暂停动画 */
+  animation-play-state: paused;
+}
+
+.songContainer .discContainer.playing  {
+  /* 开始动画 */
+  animation-play-state: running;
+}
+
+.songContainer .discContainer .disc {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 97;
+}
+
+.songContainer .discContainer .discImg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 370rpx;
+  height: 370rpx;
+}
+
+@keyframes retateDise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

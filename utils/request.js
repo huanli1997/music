@@ -7,9 +7,20 @@ export default function(url, data = {}, method = "GET") {
       url: config.host + url,
       data,
       method,
+      // 设置请求头
+      header: {
+        cookie: JSON.parse(wx.getStorageSync("cookies") || "[]").toString()
+      },
       // 请求成功的回调
       success: (res) => {
-        // console.log("222",res.data)
+        if (data.isLogin) {
+          // 将cookies保存到storage
+          let cookies = res.cookies;
+          wx.setStorage({
+            key: 'cookies',
+            data: JSON.stringify(cookies),
+          })
+        }
         resolve(res.data)
       }
     })

@@ -1,47 +1,126 @@
-/* pages/video/video.wxss */
-.header{
-  padding: 10rpx;
-  display: flex;
+
+.videoContainer .header{
+  display:flex;
+  padding:10rpx 10rpx 0;
+  /* justify-content: space-between; */
 }
 
-.header image{
-  width: 60rpx;
-  height: 60rpx
+.videoContainer .header image{
+  width:60rpx;
+  height:60rpx;
+  /* flex-grow:1; */
 }
 
-.header input{
-  border: 1rpx solid #eee;
-  margin: 0 10rpx;
+.videoContainer .header input{
+  border:1rpx solid #eee;
+  height:60rpx;
+  margin:0 10rpx;
   border-radius: 10rpx;
-  padding: 10rpx 0;
-  flex-grow: 1
+  flex-grow:1;
 }
 
-.header .placeholder{
-  color: red;
-  font-size: 28rpx;
-  text-align: center
+.videoContainer .header input .placeholder{
+  text-align: center;
+  font-size:28rpx;
+  color:red;
 }
 
-.navScroll{
+.videoContainer .navScroll{
   display: flex;
-  height: 106rpx;
+  height:100rpx;
 }
 
-.navScroll .navItem{
-  margin: 0 20rpx;
-  flex-shrink: 0;
-  height: 100rpx;
-  line-height: 100rpx
+.videoContainer .navScroll .navItem{
+  height:100rpx;
+  /* line-height:100rpx; */
+  /* margin:0 20rpx; */
+  padding:0 20rpx;
+  white-space:nowrap;
 }
 
-.navScroll .navItem.active{
+.videoContainer .navScroll .navItem text{
+  display:block;
+  line-height: 96rpx;
+  box-sizing: border-box;
+}
+
+.videoContainer .navScroll .navItem.active text{
   border-bottom:4rpx solid red;
 }
 
-
-.navScroll .navItem text{
-  display: inline-block;
+/* 
+  当前video组件内显示的画面左右有黑色"边框",并未填充完整,与image组件切换时有些突兀
+  将video标签宽度和高度的比例设置的跟图片原有高度相同,通过video标签宽度计算高度
+  因为videoItem有左右的padding 3% 使用video组件实际屏幕宽度只有94vw
+  width:94%/heigt:x = width:1920 height:1080
+ */
+.videoList .common {
   width: 100%;
-  height: 100%
+  border-radius: 10rpx;
+  height: 52.875vw;
+}
+
+.videoList .videoItem{
+  padding:3%;
+  padding-bottom:0;
+}
+
+
+.videoList{
+  padding-top:40rpx;
+  /* 设置为内缩盒模型,IE怪异盒模型,box-sizing:border-box,就可以少减40rpx */
+  height: calc(100vh - 100rpx - 72rpx - 40rpx)
+}
+
+.videoList .content {
+  font-size: 26rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  max-width: 500rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* footer */
+.footer {
+  border-top: 1rpx solid #eee;
+  padding: 20rpx 0;
+}
+.footer .avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.footer  .nickName {
+  font-size: 26rpx;
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
+
+.footer .comments_praised {
+  float: right;
+}
+.comments_praised .btn {
+  display: inline;
+  padding: 0;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.comments_praised .btn:after {
+  border: none;
+}
+
+.comments_praised .item {
+  margin-left: 50rpx;
+  position: relative;
+}
+
+.comments_praised .item .count {
+  position: absolute;
+  top: -20rpx;
+  font-size: 20rpx;
 }

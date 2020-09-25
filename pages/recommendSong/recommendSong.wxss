@@ -1,0 +1,82 @@
+/* pages/recommendSong/recommendSong.wxss */
+
+.header {
+  width: 100%;
+  height: 300rpx;
+  position: relative;
+}
+
+.header image {
+  width: 100%;
+  height: 100%;
+}
+
+.header .date {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+  color: white;
+  font-size: 44rpx;
+}
+
+.header .month {
+  font-size: 40rpx;
+}
+
+.recommendList {
+  position: relative;
+  top: -20rpx;
+  padding: 20rpx;
+  background: #fff;
+  border-radius: 40rpx;
+}
+
+.recommendList .listHeader {
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.recommendList .listHeader .changeMore {
+  font-size: 28rpx;
+}
+
+.scrollView{
+  height: calc(100vh - 420rpx)
+}
+
+.scrollViewItem {
+  display: flex;
+  padding: 10rpx 0;
+}
+
+.scrollViewItem image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+  /* 收缩系数，防止文字太长，压缩图片 */
+  flex-shrink: 0
+}
+
+.scrollViewItem .musicContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  font-size: 24rpx;
+  overflow: hidden;
+  /* 显示省略符号来代表被修剪的文本,没有宽度，不会生效 */
+  /* text-overflow: ellipsis; */
+  /* 文本不进行换行 */
+  white-space: nowrap;
+}
+
+
+.scrollViewItem .radio {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: right;
+}

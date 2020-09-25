@@ -11,7 +11,7 @@
 
 <!-- 导航 -->
 <view class="headerNav">
-  <view class="headerItem">
+  <view class="headerItem" bindtap="toRecommendSong">
     <text class="iconfont icon-meirituijian-"></text>
     <text>每日推荐</text>
   </view>

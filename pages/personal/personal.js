@@ -9,12 +9,9 @@ Page({
     moveDistance: 0, // 移动的距离
     moveTransition: "none", // 移动的动画
     // 用户登录信息
-    userInfo: {
-      nickname: "",
-      avatarUrl: ""
-    },
+    userInfo: {},
     // 最近播放
-    playList:{}
+    playList: null
   },
 
   // 页面滑动
@@ -73,22 +70,8 @@ Page({
   
     // 如果有值就设置给data
     if (!this.data.userInfo.nickname && userInfoStr) {
-      // 转成原来的数据格式
-      userInfoStr = JSON.parse(userInfoStr)
-
-      // 只提取有用的数据
-      let {
-        nickname,
-        avatarUrl,
-        userId
-      } = userInfoStr
-
       this.setData({
-        userInfo: {
-          nickname,
-          avatarUrl,
-          userId
-        }
+        userInfo: JSON.parse(userInfoStr)
       })
     }
   },
@@ -98,15 +81,17 @@ Page({
     */
   onShow: async function () {
     //如果Storage中有用户信息,就获取对应的userId去发送请求,获取用户最近播放记录
-    let result =await request('/user/record',{
-      type:1,
-      uid: this.data.userInfo.userId
-    })
-    // console.log(result.weekData.slice(0,20))
-    this.setData({
-      // 数据太多了，只取20条，slice不改变原数组
-      playList: result.weekData.slice(0, 20)
-    })
+    if (this.data.userInfo.nickname){
+      let result = await request('/user/record', {
+        type: 1,
+        uid: this.data.userInfo.userId
+      })
+      // console.log(result.weekData.slice(0,20))
+      this.setData({
+        // 数据太多了，只取20条，slice不改变原数组
+        playList: result.weekData.slice(0, 20)
+      })
+    }
   },
 
   /**

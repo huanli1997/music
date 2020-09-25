@@ -51,7 +51,9 @@ Page({
     // 发送请求 引入request
     let result = await request("/login/cellphone", {
       phone,
-      password
+      password,
+      // 用于存储cookie做一个标识
+      isLogin:true
     })
     /*
         登录接口

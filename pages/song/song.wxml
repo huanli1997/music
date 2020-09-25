@@ -1,0 +1,10 @@
+<!--pages/song/song.wxml-->
+<view class="songContainer">
+  <view class="name">{{songs[0].ar[0].name}}</view>
+  <view class="keng"></view>
+  <image class="needle {{isPlaying?'playing':''}}" src="/static/images/song/needle.png"></image>
+  <view class="discContainer {{isPlaying?'playing':''}}">
+    <image class="disc" src="/static/images/song/disc.png"></image>
+    <image class="discImg" src="{{songs[0].al.picUrl}}"></image>
+  </view>
+</view>
