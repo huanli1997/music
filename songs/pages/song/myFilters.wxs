@@ -1,0 +1,27 @@
+//只能使用ES5语法
+//不能引入js文件
+
+function timerFilters(time, type) {
+  // 如果传入的是毫秒，提前处理一下
+  if (type === 'ms') {
+    time = time / 1000
+  }
+
+  var min = Math.floor(time / 60)
+  var sec = Math.floor(time % 60)
+
+  // 如果小于 10 ，想进行拼接
+  if (min < 10) {
+    min = "0" + min
+  }
+  if (sec < 10) {
+    sec = "0" + sec
+  }
+
+  return min +":"+ sec
+}
+
+// 暴露
+module.exports = {
+  timerFilters: timerFilters
+}

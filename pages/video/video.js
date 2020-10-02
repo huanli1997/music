@@ -225,17 +225,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function(options) {
+  onLoad: function(options) {
+    // 为了每次进入都获取到最新数据，可以放到onshow里面请求
     // 获取视频分类
-    let result = await request("/video/group/list")
-    // 初始化一个id
-    let currentId = result.data[0].id
-    this.setData({
-      currentId,
-      videoGroup: result.data.slice(0, 15)
-    })
+    // let result = await request("/video/group/list")
+    // // 初始化一个id
+    // let currentId = result.data[0].id
+    // this.setData({
+    //   currentId,
+    //   videoGroup: result.data.slice(0, 15)
+    // })
 
-    this.getVideoListData()
+    // this.getVideoListData()
 
   },
 
@@ -249,8 +250,16 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: async function() {
+    let result = await request("/video/group/list")
+    // 初始化一个id
+    let currentId = result.data[0].id
+    this.setData({
+      currentId,
+      videoGroup: result.data.slice(0, 15)
+    })
 
+    this.getVideoListData()
   },
 
   /**

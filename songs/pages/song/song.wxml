@@ -1,0 +1,37 @@
+<!--pages/song/song.wxml-->
+<!-- 引入wxs语法 -->
+<!-- <wxs src='./myFilters.wxs' module="filter" /> -->
+<view class="songContainer">
+  <view class="name">{{songs[0].ar[0].name}}</view>
+  <view class="keng"></view>
+  <image class="needle {{isPlaying?'playing':''}}" src="/static/images/song/needle.png"></image>
+  <view class="discContainer {{isPlaying?'playing':''}}">
+    <image class="disc" src="/static/images/song/disc.png"></image>
+    <image class="discImg" src="{{songs[0].al.picUrl}}"></image>
+  </view>
+
+  <!-- 播放条内容 -->
+  <view class="audioContainer">
+    <!-- 开始时间 -->
+    <text>{{currentTime}}</text>
+
+    <!-- 进度条 -->
+    <view class="barContainer">
+      <view class="audio-current-time" style="width:{{currentWidth}}%">
+        <view class="audio-current-point"></view>
+      </view>
+    </view>
+
+    <!-- 结束时间 -->
+    <text>{{durationTime}}</text>
+  </view>
+
+  <!-- 播放器控制 -->
+  <view class="musicControl">
+    <text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle"></text>
+    <text class="iconfont icon-shangyishou" bindtap="switchSong" id="pre"></text>
+    <text class="iconfont {{isPlaying ?'icon-zanting':'icon-bofang'}} big" bindtap="handlePlay"></text>
+    <text class="iconfont icon-next" bindtap="switchSong" id="next"></text>
+    <text class="iconfont icon-iconsMusicyemianbofangmoshiPlayList"></text>
+  </view>
+</view>
